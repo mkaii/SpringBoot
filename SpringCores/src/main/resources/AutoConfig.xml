@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--this tag is for enabling all annotations-->
+    <context:annotation-config/>
+
+
+    <!--This is one bean or object-->
+<!--    <bean class = "org.springcore.Student" name="Student1">
+        <property name="studentId">
+            <value>22344</value>
+        </property>
+        <property name="studentName">
+            <value>Mainak Ghosh</value>
+        </property>
+        <property name="studentAddress">
+            <value>H3-053-Zeta-1</value>
+        </property>
+    </bean>-->
+
+<!--    <bean class = "org.springcore.Student" name="Student1">
+
+        <property name="studentId" value = "22344"/>
+        <property name="studentName" value = "Mainak Ghosh"/>
+        <property name="studentAddress" value = "Greater Noida"/>
+
+    </bean>
+    &lt;!&ndash;This is second bean&ndash;&gt;
+    <bean class = "org.springcore.Student" name="Student2">
+        <property name="studentId" value = "22345"/>
+        <property name="studentName" value = "Asu Ghosh"/>
+        <property name="studentAddress" value = "Noida"/>
+
+
+    </bean>-->
+
+    <!--<bean class = "org.springcore.Student" name = "Student1" p:studentId = "22344" p:studentName = "Mainak Ghosh" p:studentAddress = "Greater Noida"/>
+    <bean class = "org.springcore.Student" name = "Student2" p:studentId = "22345" p:studentName = "Asu Ghosh" p:studentAddress = "Noida"/>-->
+
+
+<!--    <bean class="org.springcoreref.ref.B" name="bRef">
+        <property name="y" value="90"/>
+    </bean>-->
+
+
+<!--    <bean class="org.springcoreref.ref.A" name = "aRef">
+        <property name="x" value="12"/>
+        <property name="ob">
+            <ref bean="bRef" />
+        </property>
+    </bean>-->
+
+    <!--my change intuition &#45;&#45; was correct-->
+    <!--<bean class="org.springcoreref.ref.A" name = "aRef">
+        <property name="ob" ref="bRef"/>
+    </bean>-->
+
+    <!--using p tag all bean tags have class to create object off and a name to call it on the basis of-->
+   <!-- <bean class="org.springcoreref.ref.A" name="aRef" p:x = "12" p:ob-ref="bRef"/>-->
+
+    <!--in the bean below "158"  gives error but 158 doesnt-->
+<!--    <bean class="org.springCIcore.ci.Person" name="person">
+        <constructor-arg>
+            <value>"Mainak Ghosh"</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value type="int">158</value>
+        </constructor-arg>
+
+    </bean>-->
+
+<!--    <bean class="org.springCIcore.ci.Person" name="person">
+        <constructor-arg value="Mainak Ghosh"/>
+        <constructor-arg value="156" type="int"/>
+        &lt;!&ndash;works without type as well could be there are 2 constructor and is helpful in the case of ambiguity&ndash;&gt;
+    </bean>-->
+
+    <!--&lt;!&ndash;same use-case as above but the constructor also has a object (ref)&ndash;&gt;
+     &lt;!&ndash;Declare bean or dependency object first and then use it in the main bean using ref&ndash;&gt;
+    <bean class="org.springCIcore.ci.Certi" name="certiRef">
+        <constructor-arg value="Math Master"/>
+    </bean>
+
+    <bean class="org.springCIcore.ci.Person" name="person">
+        <constructor-arg value="Mainak Ghosh"/>
+        <constructor-arg value="156" type="int"/>
+        <constructor-arg ref="certiRef"/>
+        &lt;!&ndash;works without type as well could be there are 2 constructor and is helpful in the case of ambiguity&ndash;&gt;
+    </bean>-->
+
+    <!--do the above thing using c schema just like p schema-->
+    <bean class="org.springCIcore.ci.Certi" name="certiRef" c:name = "Math master"/>
+    <!--pass certiref as a bean ref to person bean-->
+    <bean class="org.springCIcore.ci.Person" name="person" c:name = "Mainak Ghosh" c:personId = "159" c:certificate-ref = "certiRef"/>
+
+    <!--calls the first one in the code in case of ambuguity-->
+<!--    <bean class="org.springCIcore.ci.Addition" name="add">
+        <constructor-arg value = "12"/>
+        <constructor-arg value = "11"/>
+    </bean>-->
+
+    <!--calls in, int since type is defined-->
+    <!--<bean class="org.springCIcore.ci.Addition" name="add">
+        <constructor-arg value = "12" type="int" index="1"/>
+        <constructor-arg value = "11" type="int" index="0"/>
+    </bean>-->
+
+
+
+    <!--<bean class="org.springLcore.lifecycle.Samosa" name="s1" init-method="hey" destroy-method="bye">
+        <property name="price" value="10"/>
+    </bean>
+
+    <bean class="org.springLcore.lifecycle.Pepsi" name="p1">
+        <property name="price" value="5"/>
+    </bean>
+
+    &lt;!&ndash;enable post constructor annotations and pre destroy only use the following bean&ndash;&gt;
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+    <bean class="org.springLcore.lifecycle.Cig" name="cig1">
+        <property name="brand" value="Malboro"/>
+    </bean>-->
+
+
+    <!--autowiring starts from here-->
+
+    <bean class="org.springAutoCore.autowired.Address" name="address1">
+        <property name="street" value="Amrapali Grand"/>
+        <property name="city" value="Greater Noida"/>
+    </bean>
+
+    <bean class="org.springAutoCore.autowired.Address" name="address2">
+        <property name="street" value="Assotech Springfield"/>
+        <property name="city" value="Greater Noida"/>
+    </bean>
+
+
+
+    <!--tries to find the bean with matching dependency name/type etc and setter injection is called-->
+<!--    <bean class="org.springAutoCore.autowired.Employee" name="emp1" autowire="byName"/>-->
+
+    <!--tries to find the bean with matching dependency name/type etc and constructor injection is called-->
+    <!--<bean class="org.springAutoCore.autowired.Employee" name="emp1" autowire="constructor"/>-->
+
+    <!--tries to find the bean with matching dependency name/type etc and setter injection is called-->
+    <bean class="org.springAutoCore.autowired.Employee" name="emp1"/> <!--works with autowired-->
+    </beans>

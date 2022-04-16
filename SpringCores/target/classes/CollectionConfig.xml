@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--This is one bean or object-->
+    <!--    <bean class = "org.springcore.Student" name="Student1">
+            <property name="studentId">
+                <value>22344</value>
+            </property>
+            <property name="studentName">
+                <value>Mainak Ghosh</value>
+            </property>
+            <property name="studentAddress">
+                <value>H3-053-Zeta-1</value>
+            </property>
+        </bean>-->
+
+    <!--    <bean class = "org.springcore.Student" name="Student1">
+
+            <property name="studentId" value = "22344"/>
+            <property name="studentName" value = "Mainak Ghosh"/>
+            <property name="studentAddress" value = "Greater Noida"/>
+
+        </bean>
+        &lt;!&ndash;This is second bean&ndash;&gt;
+        <bean class = "org.springcore.Student" name="Student2">
+            <property name="studentId" value = "22345"/>
+            <property name="studentName" value = "Asu Ghosh"/>
+            <property name="studentAddress" value = "Noida"/>
+
+
+        </bean>-->
+
+    <!--<bean class = "org.springcore.Student" name = "Student1" p:studentId = "22344" p:studentName = "Mainak Ghosh" p:studentAddress = "Greater Noida"/>
+    <bean class = "org.springcore.Student" name = "Student2" p:studentId = "22345" p:studentName = "Asu Ghosh" p:studentAddress = "Noida"/>-->
+
+    <bean class = "org.springCcore.collections.Employees" name ="emp1" >
+        <property name="name" value="Radhe"/>
+        <property name="phones">
+            <list>
+                <value>9899971695</value>
+                <value>9899971696</value>
+                <value>9899971698</value>
+                <value>9899971699</value>
+                <null/>
+            </list>
+        </property>
+        <property name="address" >
+            <set>
+                <value>zeta</value>
+                <value>gama</value>
+                <value>beta</value>
+                <null/>
+            </set>
+        </property>
+
+        <property name="courses" >
+            <map>
+                <entry key = "java" value = "2M"></entry>
+                <entry key = "cpp" value = "3M"></entry>
+                <entry key = "dotnet" value = "4M"></entry>
+            </map>
+        </property>
+    </bean>
+</beans>

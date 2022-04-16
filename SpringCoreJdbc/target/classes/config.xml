@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/springjdbc"/>
+        <property name="username" value="root"/>
+        <property name="password" value="ina728dg"/>
+    </bean>
+
+    <bean class="org.springframework.jdbc.core.JdbcTemplate" name="jdbcTemplate" >
+        <property name="dataSource">
+            <ref bean="ds"/>
+        </property>
+    </bean>
+
+    <bean class="spring.jdbc.dao.RowMapperImpl" name="rowMapper"/>
+
+    <bean class="spring.jdbc.dao.StudentDaoImpl" name="studDaoImpl">
+        <property name="jdbcTemplate" ref = "jdbcTemplate"/>
+        <property name="rowMapper" ref="rowMapper"/>
+    </bean>
+
+
+
+</beans>
